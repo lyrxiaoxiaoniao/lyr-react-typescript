@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import {Button} from 'antd';
+import * as React from 'react';
+import { Button } from 'antd';
 import * as styles from '../../index.scss';
-import 'antd/lib/button/style/index.less'
+import { ComponentExt } from '@utils/reactExt';
 @log
-class Test extends Component {
+class Test extends ComponentExt {
+  showMsg = () => {
+    this.$message.success('成功的通知')
+  }
   render() {
     return (
-    <div className={styles.test}>
-      <Button type="primary">ceshi</Button>
-    </div>
+      <div className={styles.test}>
+        <Button onClick={this.showMsg} type="primary">通知</Button>
+      </div>
     );
   }
 }

@@ -1,4 +1,4 @@
 module.exports = {
-  'primary-color': 'black',
+  'primary-color': 'pink',
   'border-radius-base': '30px'
 }
