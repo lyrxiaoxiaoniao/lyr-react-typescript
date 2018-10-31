@@ -6,8 +6,11 @@ import * as styles from './index.scss';
 import Test from '@components/Test';
 const render = () => {
   ReactDOM.render(
-    // <div className={styles.test}>123<span className={styles.test2}>678</span></div>
-    <Test />,
+    // <div className={styles.test}>
+    //   123
+    //   <span className={styles.test2}>678</span>
+    // </div>,
+      <Test />,
     document.querySelector('#app')
   );
 };
