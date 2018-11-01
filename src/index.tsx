@@ -7,6 +7,7 @@ import { Provider } from 'mobx-react';
 // import * as styles from './index.scss';
 // import Test from '@components/Test';
 import Counter from '@views/Counter';
+import App from '@shared/App';
 import * as store from './store';
 
 // 这里面的configure({enforceActions: 'observed'})
@@ -15,7 +16,7 @@ configure({ enforceActions: 'observed' });
 const render = () => {
   ReactDOM.render(
     <Provider {...store}>
-      <Counter />
+      <App />
     </Provider>,
     document.querySelector('#app')
   );

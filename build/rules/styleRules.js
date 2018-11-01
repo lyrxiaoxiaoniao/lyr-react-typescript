@@ -1,22 +1,37 @@
-const {
-  resolve
-} = require('../utils');
-const theme = require('../../theme')
-module.exports = [{
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { resolve } = require('../utils');
+const theme = require('../../theme');
+
+const cacheLoader = {
+  loader: 'cache-loader',
+  options: {
+    // 加入cache-loader 对.scss文件类型的转换配置中使用它，在这里我们主要是针对转换出来的css进行缓存
+    cacheDirectory: resolve('.cache-loader')
+  }
+}
+module.exports = [
+  {
+    test: /\.css$/,
+    include: [resolve('node_nodules')],
+    use: [
+      cacheLoader,
+      'css-loader',
+      'postcss-loader'
+    ]
+  },
+  {
     test: /\.scss$/,
     //  只针对src下面的.scss文件进行编译
     include: [resolve('src')],
-    use: [{
-        loader: 'cache-loader',
-        options: {
-          // 加入cache-loader 对.scss文件类型的转换配置中使用它，在这里我们主要是针对转换出来的css进行缓存
-          cacheDirectory: resolve('.cache-loader')
-        }
-      },
-      {
-        loader: 'style-loader',
-        options: {}
-      },
+    use: [
+      cacheLoader,
+      // style-loader用于将css-loader编译出来的代码转为js代码并写入js文件中，所以在这里
+      // 我们需要用mini-css-extract-plugin中的loader去替换掉style-loader
+      // 让它写入单独的css文件而不是js文件中
+      // {
+      //   loader: 'style-loader'
+      // },
+      MiniCssExtractPlugin.loader,
       // typescript 我们这里用 typings-for-css-modules-loader  代替 css-loader
       // 'css-loader',
       {
@@ -32,6 +47,7 @@ module.exports = [{
           sass: true
         }
       },
+      'postcss-loader',
       {
         loader: 'sass-loader',
         options: {
@@ -47,8 +63,13 @@ module.exports = [{
     include: [resolve('node_modules')],
     // 编译顺序是 less-loader -> css-loader -> style-loader, 写法注意
     use: [
-      'style-loader',
+      // style-loader用于将css-loader编译出来的代码转为js代码并写入js文件中，所以在这里
+      // 我们需要用mini-css-extract-plugin中的loader去替换掉style-loader
+      // 让它写入单独的css文件而不是js文件中
+      // 'style-loader',
+      MiniCssExtractPlugin.loader,
       'css-loader',
+      'postcss-loader',
       {
         loader: 'less-loader',
         options: {

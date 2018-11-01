@@ -1,0 +1,15 @@
+{
+  "editor.formatOnPaste": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": false,
+  "prettier.semi": false,
+  "beautify.ignore": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
