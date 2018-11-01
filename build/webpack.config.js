@@ -23,15 +23,15 @@ module.exports = {
         modules: [resolve('src'), resolve('node_modules')],
         alias: {
             /* // 方法一： 注意这里配置完后 还需要在 tsconfig 中进行配置
-      'src': path.resolve(__dirname, '../src')
-      '@components': path.resolve(__dirname, '../src/components')
-      */
+              'src': path.resolve(__dirname, '../src')
+              '@components': path.resolve(__dirname, '../src/components')
+            */
             mobx: resolve("node_modules/mobx/lib/mobx.es6.js")
         },
         plugins: [
             /* 
-        // 方法二： 使用 tsconfig-paths-webpack-plugin 插件包 可以将tsconfig.json中paths路径配置出来
-     */
+                // 方法二： 使用 tsconfig-paths-webpack-plugin 插件包 可以将tsconfig.json中paths路径配置出来
+            */
             new TsconfigPathsPlugin({
                 // 配置文件引入tsconfig.json
                 configFile: resolve("tsconfig.json"),
