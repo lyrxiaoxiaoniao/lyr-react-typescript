@@ -10,7 +10,7 @@ const fileRules = require("./rules/fileRules")
 const optimization = require("./optimization")
 module.exports = {
     entry: {
-        app: resolve("src/index.tsx")
+        app: ['react-hot-loader/patch', resolve("src/index.tsx")]
     },
     output: {
         path: config.assetsRoot,
@@ -47,9 +47,9 @@ module.exports = {
     stats: { children: false },
     devtool: config.sourceMap ? "#source-map" : false,
     devServer: {
-        contentBase: "./",
         host: "localhost",
         compress: true,
+        hot: true,
         port: 8080,
         historyApiFallback: true
     }

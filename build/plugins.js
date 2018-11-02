@@ -20,7 +20,10 @@ const basePlugins = [
 ]
 
 const devPlugins = [
+  new webpack.NamedModulesPlugin(), //用于启动HMR时可以显示模块的相对路径
+  new webpack.HotModuleReplacementPlugin(), //hot module replacement 启动模块热替换的插件
   new HtmlWebpackPlugin({
+    title: config.title,
     filename: 'index.html',
     template: 'index.html',
     inject: true
@@ -30,6 +33,7 @@ const devPlugins = [
 const prodPlugins = [
   new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
   new HtmlWebpackPlugin({
+    title: config.title,
     filename: config.index,
     template: 'index.html',
     inject: true,

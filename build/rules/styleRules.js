@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolve } = require('../utils');
+const config = require('./../config')
 const theme = require('../../theme');
 
 const cacheLoader = {
@@ -14,6 +15,7 @@ module.exports = [
     test: /\.css$/,
     include: [resolve('node_nodules')],
     use: [
+      config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
       cacheLoader,
       'css-loader',
       'postcss-loader'
@@ -31,7 +33,7 @@ module.exports = [
       // {
       //   loader: 'style-loader'
       // },
-      MiniCssExtractPlugin.loader,
+      config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
       // typescript 我们这里用 typings-for-css-modules-loader  代替 css-loader
       // 'css-loader',
       {
@@ -67,7 +69,7 @@ module.exports = [
       // 我们需要用mini-css-extract-plugin中的loader去替换掉style-loader
       // 让它写入单独的css文件而不是js文件中
       // 'style-loader',
-      MiniCssExtractPlugin.loader,
+      config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
       'css-loader',
       'postcss-loader',
       {
