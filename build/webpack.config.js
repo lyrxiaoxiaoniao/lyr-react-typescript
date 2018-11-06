@@ -10,7 +10,7 @@ const fileRules = require("./rules/fileRules")
 const optimization = require("./optimization")
 module.exports = {
     entry: {
-        app: ['react-hot-loader/patch', resolve("src/index.tsx")]
+        app: ['babel-polyfill', resolve("src/index.tsx")]
     },
     output: {
         path: config.assetsRoot,
@@ -50,7 +50,7 @@ module.exports = {
         host: "localhost",
         compress: true,
         hot: true,
-        port: 8080,
+        port: 8888,
         historyApiFallback: true
     }
 }

@@ -1,12 +1,15 @@
 import * as React from "react"
-
 import { ComponentExt } from "@utils/reactExt"
+export interface Props {}
+class Test extends ComponentExt<Props> {
+    constructor(props: any) {
+        super(props)
+    }
 
-class Test extends ComponentExt {
     render() {
         return (
             <div>
-                <span>Test</span>
+                <span>Test页面</span>
             </div>
         )
     }

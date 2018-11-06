@@ -4,7 +4,6 @@ const constants = require("./constants")
 
 // 静态资源访问域名（CDN）
 const STATICDOMAIN = constants.APP_ENV === "prod" ? "." : ""
-
 module.exports = {
     title: '测试react',
     index: path.resolve(__dirname, `./../dist/${constants.APP_ENV}/index.html`),
@@ -12,7 +11,7 @@ module.exports = {
     assetsPublicPath: constants.APP_ENV === "dev" ? "/" : `${STATICDOMAIN}/`,
     assetsSubDirectory: "static",
     // 正式环境接入sentry需要sourceMap
-    sourceMap: constants.APP_ENV !== "test",
+    sourceMap: constants.APP_ENV !== "prod",
     extractCss: constants.APP_ENV !== "dev",
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
