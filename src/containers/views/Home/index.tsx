@@ -1,9 +1,24 @@
 import * as React from "react"
+import { observer, inject } from "mobx-react"
 import { Layout, Menu, Breadcrumb } from "antd"
 import { ComponentExt } from "@utils/reactExt"
 import CustomLink from "@components/base/CustomLink"
+import { GlobalStore, RouterStore } from "@models/index"
 const { Header, Content, Footer } = Layout
-class Home extends ComponentExt {
+interface IStoreProps {
+    globalStore: GlobalStore
+    routerStore: RouterStore
+}
+@inject((store: IStoreProps) => {
+    const { routerStore, globalStore } = store
+    return { routerStore, globalStore }
+})
+@observer
+class Home extends ComponentExt<IStoreProps> {
+    componentDidMount() {
+        const { globalStore, routerStore } = this.props
+        console.log(globalStore, routerStore)
+    }
     onLinkClick = () => {
         console.log(this.props)
     }
@@ -46,7 +61,7 @@ class Home extends ComponentExt {
                     </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>
-                    Ant Design ©2018 Created by Ant UED
+                    ©2018 Created by Xiao Liu
                 </Footer>
             </Layout>
         )

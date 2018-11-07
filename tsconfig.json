@@ -19,6 +19,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
+      "@models/*": ["models/*"],
+      "@store/*": ["store/*"],
       "@views/*": ["containers/views/*"],
       "@shared/*": ["containers/shared/*"]
     },

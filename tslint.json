@@ -37,7 +37,7 @@
       "triple-equals": [true, "allow-null-check"],
       "type-literal-delimiter": false,
       "typedef": [true, "property-declaration"],
-      "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
+      "variable-name": [false, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
       "max-classes-per-file": false,
       // tslint-react
       "jsx-no-lambda": false,
