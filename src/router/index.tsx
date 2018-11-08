@@ -1,19 +1,44 @@
 import * as React from "react"
-import { ComponentExt } from "@utils/reactExt"
-
-export interface Props {}
-class Router extends ComponentExt<Props> {
-    constructor(props: any) {
-        super(props)
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Loadable from "react-loadable"
+import loading from "./Loadding"
+import Home from "@views/Home"
+const RouterList: any[] = [
+    {
+        path: "/",
+        component: () => import("@views/Page"),
+        exact: true
+    },
+    {
+        path: "/counter",
+        component: () => import("@views/Counter"),
+        exact: true
+    },
+    {
+        path: "/test",
+        component: () => import("@views/Test"),
+        exact: true
     }
+]
 
-    render() {
-        return (
-            <div>
-                <span>Router</span>
-            </div>
-        )
-    }
-}
+const RouterMap = () => (
+    <Router>
+        <Home>
+            <Switch>
+                {RouterList.map(item => (
+                    <Route
+                        key={item.path}
+                        exact={item.exact}
+                        path={item.path}
+                        component={Loadable({
+                            loader: item.component,
+                            loading
+                        })}
+                    />
+                ))}
+            </Switch>
+        </Home>
+    </Router>
+)
 
-export default Router
+export default RouterMap

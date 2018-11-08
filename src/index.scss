@@ -1,15 +1,16 @@
 // 优化引入配置 在设置sass-loader中options的includePaths属性
 // @import './styles/var.scss'; 可以修改为 @import 'var.scss';
 // @import './styles/var.scss';
+@import 'base.scss';
 @import 'var.scss';
+@import 'scrollbar.scss';
 
-.test {
-  color: $red;
-  font-size: 48px;
-  width: 150px;
-  @include ellipsis;
-
-  .test2 {
-    color: red;
-  }
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+#app {
+  height: 100%;
+  width: 100%;
 }

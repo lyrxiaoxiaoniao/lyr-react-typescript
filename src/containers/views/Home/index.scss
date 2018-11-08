@@ -1,0 +1,38 @@
+.layout{
+  background: #131629;
+  .header{
+    border-top: 4px solid #1890ff;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    background: #21243a;
+    height: 68px;
+    .menu {
+      line-height: 64px;
+      background: #21243a;
+    }
+  }
+  .content{
+    margin: 64px 0;
+    padding: 50px 200px;
+    .showarea{
+      padding: 20px;
+      background: #21243a;
+      border-radius: 10px;
+      min-width: 800px;
+    }
+  }
+  .footer{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background: #21243a;
+    color: #fff;
+    border-top: 1px solid #1890ff;
+    .text{
+      color: #59cfdc
+    }
+  }
+}

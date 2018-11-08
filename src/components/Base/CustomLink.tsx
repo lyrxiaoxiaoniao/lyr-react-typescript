@@ -24,14 +24,24 @@ class CustomLink extends React.Component<LinkOption, any> {
                         <div>
                             <Link
                                 onClick={onLinkClick}
-                                className={`${style.link}
-                                 ${match ? style.activeLink : ""}`}
+                                className={style.link}
                                 to={to}
                                 {...rest}
                             >
                                 {children}
                             </Link>
                         </div>
+                        // <div>
+                        //     <Link
+                        //         onClick={onLinkClick}
+                        //         className={`${style.link}
+                        //          ${(match ?  match.path : undefined) === to ? style.activeLink : ""}`}
+                        //         to={to}
+                        //         {...rest}
+                        //     >
+                        //         {children}
+                        //     </Link>
+                        // </div>
                     )
                 }}
             />

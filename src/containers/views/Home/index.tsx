@@ -1,67 +1,61 @@
 import * as React from "react"
-import { observer, inject } from "mobx-react"
-import { Layout, Menu, Breadcrumb } from "antd"
-import { ComponentExt } from "@utils/reactExt"
 import CustomLink from "@components/base/CustomLink"
-import { GlobalStore, RouterStore } from "@models/index"
+import { Layout, Menu } from "antd"
 const { Header, Content, Footer } = Layout
-interface IStoreProps {
-    globalStore: GlobalStore
+import { observer, inject } from "mobx-react"
+import { RouterStore } from "@models/index"
+import * as style from "./index.scss"
+
+interface Iprops {
     routerStore: RouterStore
 }
-@inject((store: IStoreProps) => {
-    const { routerStore, globalStore } = store
-    return { routerStore, globalStore }
-})
+@inject("routerStore")
 @observer
-class Home extends ComponentExt<IStoreProps> {
+class Home extends React.Component<Iprops> {
     componentDidMount() {
-        const { globalStore, routerStore } = this.props
-        console.log(globalStore, routerStore)
+        console.log(this.props.routerStore.location.pathname)
     }
-    onLinkClick = () => {
-        console.log(this.props)
+    onLinkClick = (str: string) => {
+        console.log(this.props.routerStore.location)
+        console.log(str)
     }
     render() {
         return (
-            <Layout>
-                <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+            <Layout className={style.layout}>
+                <Header className={style.header}>
                     <div className="logo" />
                     <Menu
                         theme="dark"
                         mode="horizontal"
-                        defaultSelectedKeys={["2"]}
-                        style={{ lineHeight: "64px" }}
+                        defaultSelectedKeys={["1"]}
+                        className={style.menu}
                     >
-                        <Menu.Item key="1">
-                            <CustomLink to="/page">Page</CustomLink>
+                        <Menu.Item
+                            key="1"
+                            onClick={this.onLinkClick.bind(this, "/")}
+                        >
+                            <CustomLink to="/">首页</CustomLink>
                         </Menu.Item>
-                        <Menu.Item key="2">
-                            <CustomLink to="/test">test</CustomLink>
+                        <Menu.Item
+                            key="2"
+                            onClick={this.onLinkClick.bind(this, "/test")}
+                        >
+                            <CustomLink to="/test">scrollbar</CustomLink>
                         </Menu.Item>
-                        <Menu.Item key="3">
+                        <Menu.Item
+                            key="3"
+                            onClick={this.onLinkClick.bind(this, "/counter")}
+                        >
                             <CustomLink to="/counter">counter</CustomLink>
                         </Menu.Item>
                     </Menu>
                 </Header>
-                <Content style={{ marginTop: 64, height: "100%" }}>
-                    <Breadcrumb style={{ margin: "16px 0" }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div
-                        style={{
-                            background: "#fff",
-                            padding: 24,
-                            minHeight: 380
-                        }}
-                    >
-                        Content
-                    </div>
+                <Content className={style.content}>
+                    <div className={style.showarea}>{this.props.children}</div>
                 </Content>
-                <Footer style={{ textAlign: "center" }}>
-                    ©2018 Created by Xiao Liu
+                <Footer className={style.footer}>
+                    ©2018 Created by
+                    <span className={style.text}> Xiao Liu </span>
                 </Footer>
             </Layout>
         )

@@ -1,0 +1,13 @@
+.icons-list{
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  .icons-item{
+    flex: 1;
+    text-align: center;
+    &:hover{
+      color: #fff;
+      background-color: #1890ff;
+    }
+  }
+}
