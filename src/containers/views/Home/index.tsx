@@ -1,52 +1,72 @@
 import * as React from "react"
-import CustomLink from "@components/base/CustomLink"
 import { Layout, Menu } from "antd"
 const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
-import { RouterStore } from "@models/index"
 import * as style from "./index.scss"
-
-interface Iprops {
-    routerStore: RouterStore
-}
-@inject("routerStore")
+import { withRouter } from "react-router-dom"
+@inject("menuStore")
+@(withRouter as any)
 @observer
-class Home extends React.Component<Iprops> {
+class Home extends React.Component<any, any> {
     componentDidMount() {
-        console.log(this.props.routerStore.location.pathname)
+        console.log(this.props, 111111111111111111111)
+    }
+    componentWillMount() {
+        const key = `/${this.props.location.pathname.split("/")[1]}`
+        this.props.menuStore.SelectedKey[0] = key
     }
     onLinkClick = (str: string) => {
-        console.log(this.props.routerStore.location)
-        console.log(str)
+        this.props.history.push(str)
+        this.props.menuStore.SelectedKey[0] = str
+    }
+    renterMenuLogo() {
+        return this.props.menuStore.showIcon ? (
+            <img
+                className={style.logo}
+                src={require("@assets/favicon.png")}
+                alt="首页"
+            />
+        ) : (
+            <div className={style.text}>首页</div>
+        )
+    }
+    showIcon = () => {
+        this.props.menuStore.showIconChange()
     }
     render() {
         return (
             <Layout className={style.layout}>
                 <Header className={style.header}>
-                    <div className="logo" />
+                    <div />
                     <Menu
                         theme="dark"
                         mode="horizontal"
-                        defaultSelectedKeys={["1"]}
+                        defaultSelectedKeys={["/"]}
+                        selectedKeys={this.props.menuStore.SelectedKey}
                         className={style.menu}
                     >
                         <Menu.Item
-                            key="1"
+                            key="/"
                             onClick={this.onLinkClick.bind(this, "/")}
                         >
-                            <CustomLink to="/">首页</CustomLink>
+                            <div
+                                onMouseEnter={this.showIcon}
+                                onMouseLeave={this.showIcon}
+                            >
+                                {this.renterMenuLogo()}
+                            </div>
                         </Menu.Item>
                         <Menu.Item
-                            key="2"
+                            key="/test"
                             onClick={this.onLinkClick.bind(this, "/test")}
                         >
-                            <CustomLink to="/test">scrollbar</CustomLink>
+                            文章
                         </Menu.Item>
                         <Menu.Item
-                            key="3"
+                            key="/counter"
                             onClick={this.onLinkClick.bind(this, "/counter")}
                         >
-                            <CustomLink to="/counter">counter</CustomLink>
+                            我的
                         </Menu.Item>
                     </Menu>
                 </Header>

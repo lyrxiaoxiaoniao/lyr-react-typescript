@@ -12,12 +12,17 @@ const RouterList: any[] = [
     {
         path: "/counter",
         component: () => import("@views/Counter"),
-        exact: true
+        exact: false
     },
     {
         path: "/test",
         component: () => import("@views/Test"),
         exact: true
+    },
+    {
+        path: "/test/:topicId",
+        component: () => import("@views/Test/one"),
+        exact: false
     }
 ]
 

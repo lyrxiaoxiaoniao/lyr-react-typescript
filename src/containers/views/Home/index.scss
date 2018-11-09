@@ -8,13 +8,25 @@
     background: #21243a;
     height: 68px;
     .menu {
+      width: 1120px;
+      margin: 0 auto;
       line-height: 64px;
       background: #21243a;
+      font-size: 16px;
+      .logo{
+        width: 35px;
+        height: 35px;
+      }
+      .text{
+        text-align: center;
+        width: 35px;
+        height: 100%;
+      }
     }
   }
   .content{
-    margin: 64px 0;
-    padding: 50px 200px;
+    width: 1120px;
+    margin: 100px auto;
     .showarea{
       padding: 20px;
       background: #21243a;
