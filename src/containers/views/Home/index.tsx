@@ -19,56 +19,56 @@ class Home extends React.Component<any, any> {
         this.props.history.push(str)
         this.props.menuStore.SelectedKey[0] = str
     }
-    renterMenuLogo() {
-        return this.props.menuStore.showIcon ? (
-            <img
-                className={style.logo}
-                src={require("@assets/favicon.png")}
-                alt="首页"
-            />
-        ) : (
-            <div className={style.text}>首页</div>
-        )
-    }
-    showIcon = () => {
-        this.props.menuStore.showIconChange()
-    }
     render() {
         return (
             <Layout className={style.layout}>
                 <Header className={style.header}>
-                    <div />
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        defaultSelectedKeys={["/"]}
-                        selectedKeys={this.props.menuStore.SelectedKey}
-                        className={style.menu}
-                    >
-                        <Menu.Item
-                            key="/"
+                    <div className={style.menuContainer}>
+                        <img
                             onClick={this.onLinkClick.bind(this, "/")}
+                            className={style.logo}
+                            src={require("@assets/favicon.png")}
+                            alt=""
+                        />
+                        <Menu
+                            theme="dark"
+                            mode="horizontal"
+                            defaultSelectedKeys={["/"]}
+                            selectedKeys={this.props.menuStore.SelectedKey}
+                            className={style.menu}
                         >
-                            <div
-                                onMouseEnter={this.showIcon}
-                                onMouseLeave={this.showIcon}
+                            <Menu.Item
+                                key="/"
+                                onClick={this.onLinkClick.bind(this, "/")}
                             >
-                                {this.renterMenuLogo()}
-                            </div>
-                        </Menu.Item>
-                        <Menu.Item
-                            key="/test"
-                            onClick={this.onLinkClick.bind(this, "/test")}
-                        >
-                            文章
-                        </Menu.Item>
-                        <Menu.Item
-                            key="/counter"
-                            onClick={this.onLinkClick.bind(this, "/counter")}
-                        >
-                            我的
-                        </Menu.Item>
-                    </Menu>
+                                首页
+                            </Menu.Item>
+                            <Menu.Item
+                                key="/test"
+                                onClick={this.onLinkClick.bind(this, "/test")}
+                            >
+                                文章
+                            </Menu.Item>
+                            <Menu.Item
+                                key="/counter"
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/counter"
+                                )}
+                            >
+                                mobx
+                            </Menu.Item>
+                            <Menu.Item
+                                key="/mine"
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/mine"
+                                )}
+                            >
+                                我的
+                            </Menu.Item>
+                        </Menu>
+                    </div>
                 </Header>
                 <Content className={style.content}>
                     <div className={style.showarea}>{this.props.children}</div>

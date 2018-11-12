@@ -1,13 +1,14 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
-import {
-    withRouter,
-    BrowserRouter as Router,
-    Route,
-    Link
-} from "react-router-dom"
+import { withRouter, HashRouter as Router, Route, Link } from "react-router-dom"
+// import {
+//     withRouter,
+//     BrowserRouter as Router,
+//     Route,
+//     Link
+// } from "react-router-dom"
 import * as style from "./index.scss"
-const Data = [
+const TestData = [
     {
         id: 1,
         title: "React + TS 2.8：终极组件设计模式指南",
@@ -24,9 +25,8 @@ const Data = [
 class Test extends ComponentExt<any> {
     renterLink(item: any) {
         return (
-            // <li key={item.id} className={style.link}>
+            <li key={item.id}>
                 <Link
-                    key={item.id}
                     className={style.link}
                     to={{
                         pathname: `${this.props.match.url}/${item.id}`,
@@ -35,7 +35,7 @@ class Test extends ComponentExt<any> {
                 >
                     {item.title}
                 </Link>
-            // </li>
+            </li>
         )
     }
     render() {
@@ -44,22 +44,9 @@ class Test extends ComponentExt<any> {
             <div style={{ color: "#fff" }}>
                 <span>主题列表</span>
                 <ul>
-                    {Data.map(item => {
+                    {TestData.map(item => {
                         return this.renterLink(item)
                     })}
-                    {/* <li>
-                        <Link to={`${this.props.match.url}/使用 React 渲染`}>
-                            使用 React 渲染
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={`${this.props.match.url}/组件`}>组件</Link>
-                    </li>
-                    <li>
-                        <Link to={`${this.props.match.url}/ 属性 v. 状态`}>
-                            属性 v. 状态
-                        </Link>
-                    </li> */}
                 </ul>
             </div>
         )

@@ -7,21 +7,26 @@
     width: 100%;
     background: #21243a;
     height: 68px;
-    .menu {
+    .menu-container{
+      position: relative;
       width: 1120px;
       margin: 0 auto;
+      padding: 0 100px;
+      line-height: 64px;
+      .logo{
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+      }
+    }
+    .menu {
+      width: 100%;
       line-height: 64px;
       background: #21243a;
       font-size: 16px;
-      .logo{
-        width: 35px;
-        height: 35px;
-      }
-      .text{
-        text-align: center;
-        width: 35px;
-        height: 100%;
-      }
     }
   }
   .content{
