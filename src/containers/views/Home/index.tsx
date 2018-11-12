@@ -4,6 +4,8 @@ const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
+import Player from "@components/Player"
+
 @inject("menuStore")
 @(withRouter as any)
 @observer
@@ -22,6 +24,9 @@ class Home extends React.Component<any, any> {
     render() {
         return (
             <Layout className={style.layout}>
+                <div className={style.player}>
+                    <Player />
+                </div>
                 <Header className={style.header}>
                     <div className={style.menuContainer}>
                         <img
@@ -60,10 +65,7 @@ class Home extends React.Component<any, any> {
                             </Menu.Item>
                             <Menu.Item
                                 key="/mine"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/mine"
-                                )}
+                                onClick={this.onLinkClick.bind(this, "/mine")}
                             >
                                 我的
                             </Menu.Item>

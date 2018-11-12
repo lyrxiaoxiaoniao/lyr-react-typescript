@@ -16,7 +16,12 @@ for (let key in oriEnv) {
     defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
 }
 const basePlugins = [
-  new webpack.DefinePlugin(defineEnv)
+  new webpack.DefinePlugin(defineEnv),
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery'
+  }),
 ]
 
 const devPlugins = [

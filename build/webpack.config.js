@@ -26,6 +26,7 @@ module.exports = {
               'src': path.resolve(__dirname, '../src')
               '@components': path.resolve(__dirname, '../src/components')
             */
+            $: 'jquery',
             mobx: resolve("node_modules/mobx/lib/mobx.es6.js")
         },
         plugins: [

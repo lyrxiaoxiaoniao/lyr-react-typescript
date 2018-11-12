@@ -1,15 +1,11 @@
 import * as React from "react"
-import { ComponentExt } from "@utils/reactExt"
-
-export interface Props {}
-class Mine extends ComponentExt<Props> {
-    render() {
-        return (
-            <div>
-                <span>Mine</span>
-            </div>
-        )
-    }
+import * as style from "./index.scss"
+const Mine = (props: any) => {
+    return (
+        <div className={style.mine}>
+            <span>Mine</span>
+        </div>
+    )
 }
 
 export default Mine

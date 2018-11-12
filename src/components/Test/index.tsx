@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button } from 'antd';
-import * as styles from '../../index.scss';
 import { ComponentExt } from '@utils/reactExt';
 @log
 class Test extends ComponentExt {
@@ -9,7 +8,7 @@ class Test extends ComponentExt {
   }
   render() {
     return (
-      <div className={styles.test}>
+      <div>
         <Button onClick={this.showMsg} type="primary">通知</Button>
       </div>
     );
