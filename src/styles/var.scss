@@ -1,7 +1,17 @@
 $red: red;
+$blue: #1890ff;
 
 @mixin ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+// @mixin ellipsis($sum) {
+//   white-space: normal;
+//   display: -webkit-box;
+//   -webkit-box-orient: vertical;
+//   -webkit-line-clamp: $sum;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }

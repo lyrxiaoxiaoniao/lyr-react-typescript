@@ -1,0 +1,16 @@
+@import 'var.scss';
+.trackinfo{
+  width: 100px;
+  padding: 10px 10px 0;
+  .image{
+    width: 80px;
+    height: 80px;
+  }
+  .title{
+    @include ellipsis;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+}

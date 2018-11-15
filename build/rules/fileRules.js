@@ -1,4 +1,4 @@
-const { assetsPath } = require("./../utils");
+const { assetsPath } = require("./../utils")
 
 module.exports = [
     {
@@ -16,5 +16,13 @@ module.exports = [
             limit: 10000,
             name: assetsPath("fonts/[name].[hash:7].[ext]")
         }
-    }
+    },
+    // {
+    //     test: /\.(mp3|wav)(\?.*)?$/,
+    //     loader: "url-loader",
+    //     options: {
+    //         name: assetsPath("audio/[name].[ext]"),
+    //         limit: 10000
+    //     }
+    // }
 ]

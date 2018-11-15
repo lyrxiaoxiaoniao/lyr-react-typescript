@@ -1,0 +1,14 @@
+.controls{
+  color: #1890ff;
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .item{
+    align-self: center;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
