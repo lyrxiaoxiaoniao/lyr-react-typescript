@@ -2,25 +2,20 @@ import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
 import Controls from "./Controls"
 import TrackInfo from "./TrackInfo"
+import { debounce } from "@utils/index.ts"
 import * as style from "./index.scss"
 const songLists = [
+    // {
+    //     title: "5秒",
+    //     name: "王北车",
+    //     picUrl: require("@assets/songs/1.jpg"),
+    //     mp3Url: require("file-loader!../../assets/songs/8744.wav")
+    // },
     {
-        title: "5秒",
-        name: "王北车",
-        picUrl: require("@assets/songs/1.jpg"),
-        mp3Url: require("file-loader!../../assets/songs/8744.wav")
-    },
-    {
-        title: "陷阱",
-        name: "王北车",
-        picUrl: require("@assets/songs/1.jpg"),
-        mp3Url: require("file-loader!../../assets/songs/1王北车-陷阱.mp3")
-    },
-    {
-        title: "去年夏天",
-        name: "王大毛",
-        picUrl: require("@assets/songs/2.jpg"),
-        mp3Url: require("file-loader!../../assets/songs/2王大毛-去年夏天.mp3")
+        title: "Way Back Home",
+        name: "Shaun",
+        picUrl: require("@assets/songs/0.jpeg"),
+        mp3Url: require("file-loader!../../assets/songs/Shaun-Way Back Home.mp3")
     }
 ]
 interface Istates {
@@ -92,6 +87,13 @@ class Player extends ComponentExt<any, Istates> {
     onEnded = () => {
         this.next()
     }
+    // 音乐将要开始播放事件回调
+    onPlay = () => {
+        this.setState(
+            () => ({ playStatus: true }),
+            () => this.updatePlayStatus()
+        )
+    }
     render() {
         return (
             <div className={style.player}>
@@ -106,6 +108,9 @@ class Player extends ComponentExt<any, Istates> {
                     id="audio"
                     src={songLists[this.state.currentIndex].mp3Url}
                     onEnded={this.onEnded}
+                    onPlay={this.onPlay}
+                    loop
+                    autoPlay
                 >
                     Your browser does not support the audio element.
                 </audio>
