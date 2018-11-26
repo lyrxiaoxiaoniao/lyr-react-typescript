@@ -26,7 +26,7 @@ interface Istates {
 
 class Player extends ComponentExt<any, Istates> {
     public state = {
-        playStatus: true,
+        playStatus: false,
         currentIndex: 0,
         totalLength: songLists.length
     }

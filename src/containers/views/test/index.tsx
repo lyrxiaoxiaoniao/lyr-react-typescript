@@ -19,6 +19,11 @@ const TestData = [
         id: 3,
         title: "awesome-react",
         url: "https://github.com/enaqx/awesome-react"
+    },
+    {
+        id: 4,
+        title: "awesometiny",
+        url: "http://vue.awesometiny.com/"
     }
 ]
 @(withRouter as any)
