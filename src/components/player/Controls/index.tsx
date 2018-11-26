@@ -1,7 +1,11 @@
 import * as React from "react"
 import * as style from "./index.scss"
 import { Icon } from "antd"
-const Controls = (props: any) => {
+interface Iprops {
+    playStatus: boolean
+    [propName: string]: any
+}
+const Controls = (props: Iprops) => {
     const { playStatus, onPrevious, onPlay, onNext } = props
     return (
         <div className={style.controls}>

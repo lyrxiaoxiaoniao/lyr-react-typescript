@@ -13,8 +13,9 @@ Object.assign(oriEnv, {
 // 照旧将webpack下发变量置于process.env
 const defineEnv = {}
 for (let key in oriEnv) {
-    defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
+  defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
 }
+// console.log(defineEnv);
 const basePlugins = [
   new webpack.DefinePlugin(defineEnv),
   new webpack.ProvidePlugin({

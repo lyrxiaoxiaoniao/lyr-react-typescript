@@ -20,16 +20,17 @@ const history = syncHistoryWithStore(hashHistory, store.routerStore)
 // 这里面的configure({enforceActions: 'observed'})
 // 用于限制被observable(也就是store中添加了@observable)的数据的修改方式，让其只能添加了@action的函数中进行修改。
 configure({ enforceActions: "observed" })
-const render = (Component: any) => {
-    ReactDOM.render(
-        <Provider {...store}>
-            <Router history={history}>
-                <Component />
-            </Router>
-        </Provider>,
-        document.querySelector("#app")
-    )
-}
+// const render = (Component: any) => {
+//     ReactDOM.render(
+//         <Provider {...store}>
+//             <Router history={history}>
+//                 <Component />
+//             </Router>
+//         </Provider>,
+//         document.querySelector("#app")
+//     )
+// }
+// render(App)
 const renderApp = (Component: any) => {
     ReactDOM.render(
         <>
@@ -44,5 +45,4 @@ const renderApp = (Component: any) => {
     )
 }
 
-// render(App)
 renderApp(App)

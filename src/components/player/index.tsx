@@ -2,8 +2,8 @@ import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
 import Controls from "./Controls"
 import TrackInfo from "./TrackInfo"
-import { debounce } from "@utils/index.ts"
 import * as style from "./index.scss"
+// import { debounce } from "@utils/index"
 const songLists = [
     // {
     //     title: "5秒",
@@ -35,7 +35,7 @@ class Player extends ComponentExt<any, Istates> {
     }
     // 播放器状态更新
     updatePlayStatus = () => {
-        const audio = document.querySelector("#audio")
+        const audio = document.getElementById("audio") as HTMLAudioElement
         if (this.state.playStatus) {
             audio.play()
         } else {
@@ -57,7 +57,7 @@ class Player extends ComponentExt<any, Istates> {
             this.$message.warn("已经没有上一首了")
         } else {
             this.setState(
-                (prev: any) => ({ currentIndex: --prev.currentIndex }),
+                (prev: Istates) => ({ currentIndex: --prev.currentIndex }),
                 () => {
                     this.updatePlayStatus()
                     this.$message.success(
@@ -73,7 +73,7 @@ class Player extends ComponentExt<any, Istates> {
             this.$message.warn("已经没有下一首了")
         } else {
             this.setState(
-                (prev: any) => ({ currentIndex: ++prev.currentIndex }),
+                (prev: Istates) => ({ currentIndex: ++prev.currentIndex }),
                 () => {
                     this.updatePlayStatus()
                     this.$message.success(

@@ -9,7 +9,7 @@ export const Throttle = (fn: any, delay = 500) => {
     const isFirst = false
     let timer: any = null
 
-    return (...rest: any[]) => {
+    return (...rest: any) => {
         if (!isFirst) {
             self(...rest)
         }
@@ -32,14 +32,12 @@ export const Throttle = (fn: any, delay = 500) => {
  * @param delay 多少毫秒内连续触发事件，不会执行
  * @returns {Function}
  */
-export const debounce = (method: any, delay = 50) => {
+export const debounce = (method: (...rest: any) => void, delay = 50) => {
     let timer: any = null
-    return function() {
-        const self: any = this
-        const args = arguments
+    return (...rest: any) => {
         timer && clearTimeout(timer)
-        timer = setTimeout(function() {
-            method.apply(self, args)
+        timer = setTimeout(() => {
+            method(...rest)
         }, delay)
     }
 }
