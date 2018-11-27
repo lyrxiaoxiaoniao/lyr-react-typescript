@@ -69,6 +69,12 @@ class Home extends React.Component<any, any> {
                             >
                                 我的
                             </Menu.Item>
+                            <Menu.Item
+                                key="/login"
+                                onClick={this.onLinkClick.bind(this, "/login")}
+                            >
+                                登录
+                            </Menu.Item>
                         </Menu>
                     </div>
                 </Header>

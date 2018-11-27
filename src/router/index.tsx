@@ -32,11 +32,20 @@ export const RouterList: any[] = [
         exact: false
     }
 ]
+const Login = () => import("@views/Login")
 
 const RouterMap = () => (
     <Router>
-        <Home>
-            <Switch>
+        <Switch>
+            <Route
+                exact
+                path="/login"
+                component={Loadable({
+                    loader: Login,
+                    loading
+                })}
+            />
+            <Home>
                 {RouterList.map(item => (
                     <Route
                         key={item.path}
@@ -48,8 +57,8 @@ const RouterMap = () => (
                         })}
                     />
                 ))}
-            </Switch>
-        </Home>
+            </Home>
+        </Switch>
     </Router>
 )
 
