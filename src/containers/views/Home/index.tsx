@@ -49,8 +49,8 @@ class Home extends React.Component<any, any> {
                                 首页
                             </Menu.Item>
                             <Menu.Item
-                                key="/test"
-                                onClick={this.onLinkClick.bind(this, "/test")}
+                                key="/topic"
+                                onClick={this.onLinkClick.bind(this, "/topic")}
                             >
                                 文章
                             </Menu.Item>
@@ -73,7 +73,7 @@ class Home extends React.Component<any, any> {
                     </div>
                 </Header>
                 <Content className={style.content}>
-                    <div className={style.showarea}>{this.props.children}</div>
+                    {this.props.children}
                 </Content>
                 <Footer className={style.footer}>
                     ©2018 Created by

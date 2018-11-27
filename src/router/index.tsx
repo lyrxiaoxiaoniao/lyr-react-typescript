@@ -22,13 +22,13 @@ export const RouterList: any[] = [
         exact: true
     },
     {
-        path: "/test",
-        component: () => import("@views/Test"),
+        path: "/topic",
+        component: () => import("@views/Article"),
         exact: true
     },
     {
-        path: "/test/:topicId",
-        component: () => import("@views/Test/one"),
+        path: "/topic/:topicId",
+        component: () => import("@views/Article/detail"),
         exact: false
     }
 ]
