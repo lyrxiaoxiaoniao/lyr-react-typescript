@@ -46,7 +46,9 @@ module.exports = [
           // 支持驼峰
           camelCase: true,
           // 是否使用sass
-          sass: true
+          sass: true,
+          // 命名
+          localIdentName: "[local]--[hash:base64:5]"
         }
       },
       'postcss-loader',
