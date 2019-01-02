@@ -12,4 +12,7 @@
    #components-form-demo-normal-login .login-form-button {
       width: 100%;
    }
+   &-container{
+      @include content;
+   }
 }
