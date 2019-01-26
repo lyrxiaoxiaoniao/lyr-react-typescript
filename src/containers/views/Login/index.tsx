@@ -24,7 +24,7 @@ class LoginForm extends ComponentExt<any, any> {
     render() {
         const { getFieldDecorator } = this.props.form
         return (
-            <div className={style.loginContainer}>
+            <div className={style.login}>
                 <Form onSubmit={this.handleSubmit} className={style.loginForm}>
                     <FormItem>
                         {getFieldDecorator("userName", {
@@ -71,7 +71,11 @@ class LoginForm extends ComponentExt<any, any> {
                         {getFieldDecorator("remember", {
                             valuePropName: "checked",
                             initialValue: true
-                        })(<Checkbox>Remember me</Checkbox>)}
+                        })(
+                            <Checkbox className={style.loginFormCheck}>
+                                Remember me
+                            </Checkbox>
+                        )}
                         <a className={style.loginFormForgot} href="">
                             Forgot password
                         </a>

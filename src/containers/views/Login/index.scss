@@ -1,18 +1,22 @@
 @import 'var.scss';
 .login{
    @include content;
-   #components-form-demo-normal-login .login-form {
+   display: flex;
+   justify-content: center;
+   .login-form {
       max-width: 300px;
    }
 
-   #components-form-demo-normal-login .login-form-forgot {
+   .login-form-forgot {
       float: right;
    }
-
-   #components-form-demo-normal-login .login-form-button {
+   .login-form-check{
+      color: #1890ff;
+   }
+   .login-form-button {
       width: 100%;
    }
-   &-container{
-      @include content;
-   }
+   // &-container{
+   //    @include content;
+   // }
 }
