@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Layout, Menu } from "antd"
+import { Layout, Menu, Icon, BackTop } from "antd"
 const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
@@ -29,14 +29,14 @@ class Home extends React.Component<any, any> {
                 </div>
                 <Header className={style.header}>
                     <div className={style.menuContainer}>
-                        <img
+                        {/* <img
                             onClick={this.onLinkClick.bind(this, "/")}
                             className={style.logo}
                             src={require("@assets/favicon.png")}
                             alt=""
-                        />
+                        /> */}
                         <Menu
-                            theme="dark"
+                            theme="light"
                             mode="horizontal"
                             defaultSelectedKeys={["/"]}
                             selectedKeys={this.props.menuStore.SelectedKey}
@@ -46,13 +46,13 @@ class Home extends React.Component<any, any> {
                                 key="/"
                                 onClick={this.onLinkClick.bind(this, "/")}
                             >
-                                首页
+                                 <Icon type="home" />首页
                             </Menu.Item>
                             <Menu.Item
                                 key="/topic"
                                 onClick={this.onLinkClick.bind(this, "/topic")}
                             >
-                                文章
+                                 <Icon type="read" />文章
                             </Menu.Item>
                             <Menu.Item
                                 key="/counter"
@@ -61,30 +61,32 @@ class Home extends React.Component<any, any> {
                                     "/counter"
                                 )}
                             >
-                                mobx
+                                 <Icon type="mail" />mobx
                             </Menu.Item>
                             <Menu.Item
                                 key="/mine"
                                 onClick={this.onLinkClick.bind(this, "/mine")}
                             >
-                                我的
+                                 <Icon type="user" />我的
                             </Menu.Item>
                             <Menu.Item
                                 key="/login"
                                 onClick={this.onLinkClick.bind(this, "/login")}
                             >
-                                登录
+                                 <Icon type="login" />登录
                             </Menu.Item>
                         </Menu>
                     </div>
                 </Header>
                 <Content className={style.content}>
-                    {this.props.children}
+                    <div className={style.left}>{this.props.children}</div>
+                    <div className={style.user}>个人简介</div>
                 </Content>
-                <Footer className={style.footer}>
+                <BackTop />
+                {/* <Footer className={style.footer}>
                     ©2018 Created by
                     <span className={style.text}> Xiao Liu </span>
-                </Footer>
+                </Footer> */}
             </Layout>
         )
     }

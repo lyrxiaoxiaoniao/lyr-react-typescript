@@ -1,6 +1,7 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
 import { withRouter, HashRouter as Router, Route, Link } from "react-router-dom"
+import { RouteComponentProps } from "react-router"
 
 import * as style from "./index.scss"
 const TestData = [
@@ -22,7 +23,7 @@ const TestData = [
     }
 ]
 @(withRouter as any)
-class Test extends ComponentExt<any> {
+class Test extends ComponentExt<RouteComponentProps, any> {
     renterLink(item: any) {
         return (
             <li key={item.id}>
@@ -41,7 +42,7 @@ class Test extends ComponentExt<any> {
     render() {
         console.log(this.props, "test")
         return (
-            <div className={style.articel} style={{ color: "#fff" }}>
+            <div className={style.articel} style={{ color: "#333" }}>
                 <span>主题列表</span>
                 <ul>
                     {TestData.map(item => {

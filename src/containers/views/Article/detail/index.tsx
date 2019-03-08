@@ -7,7 +7,7 @@ class One extends ComponentExt<any> {
     console.log(this.props, "this.props.match")
     const { state } = this.props.location
     return (
-      <div className={style.detail} style={{ color: "#fff" }}>
+      <div className={style.detail} style={{ color: "#333" }}>
         文章详情：
                 <a href={state.url} target="_blank">{state.title}</a>
       </div>

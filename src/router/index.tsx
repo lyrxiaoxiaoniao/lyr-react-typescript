@@ -1,6 +1,7 @@
 import * as React from "react"
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { HashRouter as Router, Switch, Route } from "react-router-dom"
+// import { RouteProps } from "react-router"
 import Loadable from "react-loadable"
 import loading from "./Loadding"
 import Home from "@views/Home"
@@ -44,7 +45,7 @@ const RouterMap = () => (
         <Switch>
             {/* <Route
                 exact
-                path="/login"
+                path="/login1"
                 component={Loadable({
                     loader: Login,
                     loading

@@ -1,13 +1,13 @@
 @import 'var.scss';
 .counter{
   @include content;
-  color: #fff;
+  color: #333;
   .title{
     font-size: 20px;
   }
   .num {
     padding: 10px;
-    color: #fff;
+    color: #333;
     font-size: 18px;
   }
 }

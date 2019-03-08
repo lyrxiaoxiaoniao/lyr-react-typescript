@@ -45,7 +45,7 @@ class Player extends ComponentExt<any, Istates> {
     // 播放事件
     play = () => {
         this.setState(
-            (prev: any) => {
+            (prev: Istates) => {
                 return { playStatus: !prev.playStatus }
             },
             () => this.updatePlayStatus()
