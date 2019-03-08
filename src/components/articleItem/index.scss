@@ -1,0 +1,35 @@
+@import 'var.scss';
+.articleitem{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    height: 140px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e8e8e8;
+    .left {
+        flex: 1;
+        overflow: hidden;
+        &-title {
+            @include ellipsis;
+            display: block;
+            color: #333;
+            height: 30px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        &-content {
+            @include ellipsisnum(2);
+            height: 50px;
+            font-size: 16px;
+        }
+        &-tip {
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+    .right {
+        width: 150px;
+        height: 110px;
+    }
+}

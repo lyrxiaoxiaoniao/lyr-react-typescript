@@ -8,7 +8,7 @@ module.exports = {
         //帐号
         user: 'root',
         //密码
-        pass: 'xxxxxxx',
+        pass: '***********',
         //端口
         port: 22
     },

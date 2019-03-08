@@ -5,20 +5,27 @@ $blue: #1890ff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  word-break:break-all;
 }
 @mixin content {
    padding: 20px;
    background: #f5f5f5;
   //  background: #fff;
    border-radius: 10px;
-   min-width: 800px;
+   width: 900px;
 }
 
-// @mixin ellipsis($sum) {
-//   white-space: normal;
-//   display: -webkit-box;
-//   -webkit-box-orient: vertical;
-//   -webkit-line-clamp: $sum;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-// }
+@mixin ellipsisnum($sum) {
+  // white-space: normal;
+  // word-break:break-all;
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: $sum;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow:ellipsis; //文本溢出显示省略号
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

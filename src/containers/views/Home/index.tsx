@@ -56,10 +56,7 @@ class Home extends React.Component<any, any> {
                             </Menu.Item>
                             <Menu.Item
                                 key="/counter"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/counter"
-                                )}
+                                onClick={this.onLinkClick.bind(this,"/counter")}
                             >
                                  <Icon type="mail" />mobx
                             </Menu.Item>
@@ -80,13 +77,16 @@ class Home extends React.Component<any, any> {
                 </Header>
                 <Content className={style.content}>
                     <div className={style.left}>{this.props.children}</div>
-                    <div className={style.user}>个人简介</div>
+                    <div className={style.user}>个人简介个人简介个人简介个人简介</div>
                 </Content>
-                <BackTop />
-                {/* <Footer className={style.footer}>
+                {/* <Content className={style.content}>
+                    {this.props.children}
+                </Content> */}
+                <BackTop style={{ bottom: '100px'}} />
+                <Footer className={style.footer}>
                     ©2018 Created by
                     <span className={style.text}> Xiao Liu </span>
-                </Footer> */}
+                </Footer>
             </Layout>
         )
     }
