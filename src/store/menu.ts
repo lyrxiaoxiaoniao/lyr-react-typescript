@@ -3,7 +3,7 @@ export class MenuStore {
     @observable
     showIcon: boolean = true
     @observable
-    SelectedKey: [string?] = []
+    SelectedKey: string[] = []
 
     @action
     showIconChange = () => {

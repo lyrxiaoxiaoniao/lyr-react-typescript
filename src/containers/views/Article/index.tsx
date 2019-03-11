@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
-import { withRouter, HashRouter as Router, Route, Link } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import { RouteComponentProps } from "react-router"
 
 import * as style from "./index.scss"
@@ -22,7 +22,7 @@ const TestData = [
         url: "http://vue.awesometiny.com/"
     }
 ]
-@(withRouter as any)
+// @(withRouter as any)
 class Test extends ComponentExt<RouteComponentProps, any> {
     renterLink(item: any) {
         return (
@@ -54,4 +54,4 @@ class Test extends ComponentExt<RouteComponentProps, any> {
     }
 }
 
-export default Test
+export default withRouter(Test)

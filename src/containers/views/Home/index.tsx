@@ -1,17 +1,33 @@
 import * as React from "react"
-import { Layout, Menu, Icon, BackTop } from "antd"
+import { Layout, Menu, Icon, BackTop, Dropdown, Avatar } from "antd"
 const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
 import Player from "@components/Player"
-
+import { MenuStore } from '@models/index';
+import { RouteComponentProps } from "react-router"
+import { Ajax as $http, PagerResponse } from "../../../server/axios"
+interface Iprops extends RouteComponentProps{
+    menuStore?: MenuStore,
+    [key: string]: any
+}
 @inject("menuStore")
-@(withRouter as any)
+// There is a known issue in TypeScript, which doesn't allow decorators to change the signature of the classes
+// they are decorating. Due to this, if you are using @withRouter decorator in your code,
+// you will see a bunch of errors from TypeScript. The current workaround is to use withRouter() as a function call
+// on a separate line instead of as a decorator.
+// @(withRouter as any)  // 需要使用withRouter注入history,match,location等对象到props时候 typescript中有一个已知问题，不允许修改类的签名所以这里withRouter作为函数使用 export default withRouter(Home)
 @observer
-class Home extends React.Component<any, any> {
+class Home extends React.Component<Iprops, any> {
     componentDidMount() {
-        console.log(this.props, 111111111111111111111)
+        // console.log(this.props, 111111111111111111111)
+        $http.get<PagerResponse>("/test", { params: { a: 1 } }).then(
+            data => {
+                // 无报错，并且对 data 提示 success、data、message?
+                console.log(data, "adasd")
+            }
+        )
     }
     componentWillMount() {
         const key = `/${this.props.location.pathname.split("/")[1]}`
@@ -22,6 +38,17 @@ class Home extends React.Component<any, any> {
         this.props.menuStore.SelectedKey[0] = str
     }
     render() {
+        const menu = (
+            <Menu>
+                <Menu.Item key="0">
+                    <a rel="noopener noreferrer" href="#">
+                        退出登录
+                    </a>
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="3">注销</Menu.Item>
+            </Menu>
+        )
         return (
             <Layout className={style.layout}>
                 <div className={style.player}>
@@ -29,12 +56,18 @@ class Home extends React.Component<any, any> {
                 </div>
                 <Header className={style.header}>
                     <div className={style.menuContainer}>
-                        {/* <img
-                            onClick={this.onLinkClick.bind(this, "/")}
-                            className={style.logo}
-                            src={require("@assets/favicon.png")}
-                            alt=""
-                        /> */}
+                        <div className={style.islogin}>
+                            <Dropdown overlay={menu}>
+                                <a className={style.droplogin} href="#">
+                                    <Avatar
+                                        style={{ marginRight: "10px" }}
+                                        size={32}
+                                        src="http://placehold.it/32x32/f5f5f5.png"
+                                    />
+                                    xiao_liu
+                                </a>
+                            </Dropdown>
+                        </div>
                         <Menu
                             theme="light"
                             mode="horizontal"
@@ -46,43 +79,53 @@ class Home extends React.Component<any, any> {
                                 key="/"
                                 onClick={this.onLinkClick.bind(this, "/")}
                             >
-                                 <Icon type="home" />首页
+                                <Icon type="home" />
+                                首页
                             </Menu.Item>
                             <Menu.Item
                                 key="/topic"
                                 onClick={this.onLinkClick.bind(this, "/topic")}
                             >
-                                 <Icon type="read" />文章
+                                <Icon type="read" />
+                                文章
                             </Menu.Item>
                             <Menu.Item
                                 key="/counter"
-                                onClick={this.onLinkClick.bind(this,"/counter")}
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/counter"
+                                )}
                             >
-                                 <Icon type="mail" />mobx
+                                <Icon type="mail" />
+                                mobx
                             </Menu.Item>
                             <Menu.Item
                                 key="/mine"
                                 onClick={this.onLinkClick.bind(this, "/mine")}
                             >
-                                 <Icon type="user" />我的
+                                <Icon type="user" />
+                                我的
                             </Menu.Item>
                             <Menu.Item
                                 key="/login"
                                 onClick={this.onLinkClick.bind(this, "/login")}
                             >
-                                 <Icon type="login" />登录
+                                <Icon type="login" />
+                                登录
                             </Menu.Item>
                         </Menu>
                     </div>
                 </Header>
                 <Content className={style.content}>
                     <div className={style.left}>{this.props.children}</div>
-                    <div className={style.user}>个人简介个人简介个人简介个人简介</div>
+                    <div className={style.user}>
+                        个人简介个人简介个人简介个人简介
+                    </div>
                 </Content>
                 {/* <Content className={style.content}>
                     {this.props.children}
                 </Content> */}
-                <BackTop style={{ bottom: '100px'}} />
+                <BackTop style={{ bottom: "100px" }} />
                 <Footer className={style.footer}>
                     ©2018 Created by
                     <span className={style.text}> Xiao Liu </span>
@@ -92,4 +135,5 @@ class Home extends React.Component<any, any> {
     }
 }
 
-export default Home
+export default withRouter(Home)
+// export default Home

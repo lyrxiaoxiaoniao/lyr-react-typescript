@@ -1,27 +1,27 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
-import { Icon } from "antd"
+// import { Icon } from "antd"
 import * as style from "./index.scss"
 import ArticleItem from "@components/articleItem"
-const iconData = [
-    "android",
-    "apple",
-    "windows",
-    "ie",
-    "chrome",
-    "github",
-    "html5",
-    "taobao",
-    "youtube",
-    "amazon",
-    "zhihu",
-    "wechat",
-    "twitter",
-    "weibo",
-    "qq",
-    "skype",
-    "gitlab"
-]
+// const iconData = [
+//     "android",
+//     "apple",
+//     "windows",
+//     "ie",
+//     "chrome",
+//     "github",
+//     "html5",
+//     "taobao",
+//     "youtube",
+//     "amazon",
+//     "zhihu",
+//     "wechat",
+//     "twitter",
+//     "weibo",
+//     "qq",
+//     "skype",
+//     "gitlab"
+// ]
 class Page extends ComponentExt {
     render() {
         return (
