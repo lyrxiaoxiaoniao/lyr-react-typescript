@@ -1,21 +1,37 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-
+import localStorage from "@utils/localStorage"
 // 接口前缀
-const BASE_URL = "http://localhost:3000/api/"
-
+const BASE_URL = "http://localhost:3000/api"
+const setToken:()=>object = () => {
+    const token = localStorage.get('token') || ''
+    return token ? { Authorization: `Bearer ${token}` } : {}
+}
 // axios 配置实例
 const getAxiosInstance = (): AxiosInstance => {
     const instance: AxiosInstance = Axios.create({
         baseURL: `${BASE_URL}`
     });
-    instance.interceptors.request.use((config) => ({
-        ...config,
-        params: {
-            // 此处注意，你的`params`应该是个对象，不能是其他数据类型
-            ...(config.params || {}),
-            _: +new Date()
+    instance.defaults.headers = {
+        'X-Requested-With': 'XMLHttpRequest',
+        ...setToken(),
+    }
+    instance.defaults.timeout = 3500
+    instance.interceptors.request.use((config) => {
+        // const token = setToken()
+        // const {headers} = config
+        // if ("Authorization" in token) {
+        //     delete headers.Authorization
+        // }
+        return {
+            ...config,
+            // headers,
+            params: {
+                // 此处注意，你的`params`应该是个对象，不能是其他数据类型
+                ...(config.params || {}),
+                // _: +new Date()
+            }
         }
-    }));
+    });
 
     instance.interceptors.response.use(
         (response) => {
@@ -45,7 +61,7 @@ interface BaseResponse<T> {
     message?: string;
 }
 
-// 基本 Ajax 格式
+// 基本 Ajax 格式 使用泛型
 interface BaseAjax {
     get: <T>(url: string, config?: object) => Promise<BaseResponse<T>>;
     delete: <T>(url: string, config?: object) => Promise<BaseResponse<T>>;
@@ -140,5 +156,5 @@ const GetAxios = () => {
 };
 
 export const Ajax: BaseAjax = GetAxios();
-export type PagerResponse = any[];
+export type PageResponse = any[];
 export default GetAxios;

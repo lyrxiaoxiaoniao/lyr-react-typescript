@@ -4,7 +4,7 @@ class LocStorage {
     private prefix: string
     constructor() {
         this.storage = window.localStorage
-        this.prefix = "jf_"
+        this.prefix = "xl_"
     }
 
     set(key:string, value:any) {

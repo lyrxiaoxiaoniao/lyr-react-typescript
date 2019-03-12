@@ -1,9 +1,10 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
 import { Form, Icon, Input, Button, Checkbox } from "antd"
-import axios from "axios"
+import { Ajax as $http } from "@server/axios"
 import "./index.scss"
 import * as style from "./index.scss"
+import localStorage from "@utils/localStorage"
 const FormItem = Form.Item
 class LoginForm extends ComponentExt<any, any> {
     handleSubmit = (e: React.FormEvent) => {
@@ -11,12 +12,11 @@ class LoginForm extends ComponentExt<any, any> {
         this.props.form.validateFields((err: any, values: any) => {
             if (!err) {
                 console.log("Received values of form: ", values)
-                axios
-                    .post("http://localhost:3000/api/user/login", values)
-                    // .post("http://localhost:3000/api/user/register", values)
-                    .then((res: any) => {
-                        console.log(res, "res")
-                    })
+                $http.post("/user/login", values).then((res: any) => {
+                // $http.post("/user/register", values).then((res: any) => {
+                    // console.log(res.data.token, "res")
+                    localStorage.set('token', res.data.token)
+                })
             }
         })
     }
@@ -27,7 +27,7 @@ class LoginForm extends ComponentExt<any, any> {
             <div className={style.login}>
                 <Form onSubmit={this.handleSubmit} className={style.loginForm}>
                     <FormItem>
-                        {getFieldDecorator("userName", {
+                        {getFieldDecorator("username", {
                             rules: [
                                 {
                                     required: true,

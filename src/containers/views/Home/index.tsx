@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom"
 import Player from "@components/Player"
 import { MenuStore } from '@models/index';
 import { RouteComponentProps } from "react-router"
-import { Ajax as $http, PagerResponse } from "../../../server/axios"
+import { Ajax as $http, PageResponse } from "../../../server/axios"
 interface Iprops extends RouteComponentProps{
     menuStore?: MenuStore,
     [key: string]: any
@@ -21,8 +21,7 @@ interface Iprops extends RouteComponentProps{
 @observer
 class Home extends React.Component<Iprops, any> {
     componentDidMount() {
-        // console.log(this.props, 111111111111111111111)
-        $http.get<PagerResponse>("/test", { params: { a: 1 } }).then(
+        $http.get<PageResponse>("/test", { params: { a: 1 } }).then(
             data => {
                 // 无报错，并且对 data 提示 success、data、message?
                 console.log(data, "adasd")
@@ -62,7 +61,7 @@ class Home extends React.Component<Iprops, any> {
                                     <Avatar
                                         style={{ marginRight: "10px" }}
                                         size={32}
-                                        src="http://placehold.it/32x32/f5f5f5.png"
+                                        src={require("@assets/favicon.png")}
                                     />
                                     xiao_liu
                                 </a>
@@ -72,19 +71,27 @@ class Home extends React.Component<Iprops, any> {
                             theme="light"
                             mode="horizontal"
                             defaultSelectedKeys={["/"]}
-                            selectedKeys={this.props.menuStore.SelectedKey}
+                            selectedKeys={
+                                this.props.menuStore.SelectedKey
+                            }
                             className={style.menu}
                         >
                             <Menu.Item
                                 key="/"
-                                onClick={this.onLinkClick.bind(this, "/")}
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/"
+                                )}
                             >
                                 <Icon type="home" />
                                 首页
                             </Menu.Item>
                             <Menu.Item
                                 key="/topic"
-                                onClick={this.onLinkClick.bind(this, "/topic")}
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/topic"
+                                )}
                             >
                                 <Icon type="read" />
                                 文章
@@ -101,14 +108,20 @@ class Home extends React.Component<Iprops, any> {
                             </Menu.Item>
                             <Menu.Item
                                 key="/mine"
-                                onClick={this.onLinkClick.bind(this, "/mine")}
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/mine"
+                                )}
                             >
                                 <Icon type="user" />
                                 我的
                             </Menu.Item>
                             <Menu.Item
                                 key="/login"
-                                onClick={this.onLinkClick.bind(this, "/login")}
+                                onClick={this.onLinkClick.bind(
+                                    this,
+                                    "/login"
+                                )}
                             >
                                 <Icon type="login" />
                                 登录
@@ -117,7 +130,9 @@ class Home extends React.Component<Iprops, any> {
                     </div>
                 </Header>
                 <Content className={style.content}>
-                    <div className={style.left}>{this.props.children}</div>
+                    <div className={style.left}>
+                        {this.props.children}
+                    </div>
                     <div className={style.user}>
                         个人简介个人简介个人简介个人简介
                     </div>

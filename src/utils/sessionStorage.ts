@@ -6,7 +6,7 @@ class Session {
     private prefix: string
     constructor() {
         this.session = window.sessionStorage
-        this.prefix = "jf_"
+        this.prefix = "xl_"
     }
     public set(key:string, value: any) {
         this.session.setItem(this.prefix + key, JSON.stringify(value))

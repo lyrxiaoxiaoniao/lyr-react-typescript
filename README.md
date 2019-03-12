@@ -12,7 +12,7 @@
 ts-react-mobx
 ├── README.md
 ├── theme.js                   // antd主题
-├── typings                    // ts  类型定义文件(*.d.ts)
+├── @types                     // ts  类型定义文件(*.d.ts)
 ├── index.html                 // html
 ├── src                        // 代码
 |   ├── assets                 // 静态资源
