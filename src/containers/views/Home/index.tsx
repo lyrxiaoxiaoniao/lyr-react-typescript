@@ -1,15 +1,17 @@
 import * as React from "react"
-import { Layout, Menu, Icon, BackTop, Dropdown, Avatar } from "antd"
+import { Layout, Menu, Icon, BackTop, Dropdown, Avatar, Button } from "antd"
 const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
 import Player from "@components/Player"
-import { MenuStore } from '@models/index';
+import { MenuStore } from "@models/index"
 import { RouteComponentProps } from "react-router"
 import { Ajax as $http, PageResponse } from "../../../server/axios"
-interface Iprops extends RouteComponentProps{
-    menuStore?: MenuStore,
+import localStorage from "@utils/localStorage"
+import LoginDialog from "../Login/index"
+interface Iprops extends RouteComponentProps {
+    menuStore?: MenuStore
     [key: string]: any
 }
 @inject("menuStore")
@@ -21,14 +23,18 @@ interface Iprops extends RouteComponentProps{
 @observer
 class Home extends React.Component<Iprops, any> {
     componentDidMount() {
-        $http.get<PageResponse>("/test", { params: { a: 1 } }).then(
-            data => {
-                // 无报错，并且对 data 提示 success、data、message?
-                console.log(data, "adasd")
-            }
-        )
+        $http.get<PageResponse>("/test", { params: { a: 1 } }).then(data => {
+            // 无报错，并且对 data 提示 success、data、message?
+            console.log(data, "adasd")
+        })
     }
     componentWillMount() {
+        if (localStorage.get("userinfo")) {
+            console.log(11111111);
+            this.props.menuStore.setUserinfo(
+                localStorage.get("userinfo")
+            )
+        }
         const key = `/${this.props.location.pathname.split("/")[1]}`
         this.props.menuStore.SelectedKey[0] = key
     }
@@ -36,7 +42,12 @@ class Home extends React.Component<Iprops, any> {
         this.props.history.push(str)
         this.props.menuStore.SelectedKey[0] = str
     }
+    showLoginDialog = () => {
+        this.props.menuStore.onCancel()
+    }
     render() {
+        const { userinfo } = this.props.menuStore
+        const islogin: boolean = Boolean(Object.keys(userinfo).length)
         const menu = (
             <Menu>
                 <Menu.Item key="0">
@@ -45,53 +56,52 @@ class Home extends React.Component<Iprops, any> {
                     </a>
                 </Menu.Item>
                 <Menu.Divider />
-                <Menu.Item key="3">注销</Menu.Item>
+                <Menu.Item key="3" disabled>注销</Menu.Item>
             </Menu>
         )
         return (
             <Layout className={style.layout}>
+                <LoginDialog />
                 <div className={style.player}>
                     <Player />
                 </div>
                 <Header className={style.header}>
                     <div className={style.menuContainer}>
                         <div className={style.islogin}>
-                            <Dropdown overlay={menu}>
-                                <a className={style.droplogin} href="#">
-                                    <Avatar
-                                        style={{ marginRight: "10px" }}
-                                        size={32}
-                                        src={require("@assets/favicon.png")}
-                                    />
-                                    xiao_liu
-                                </a>
-                            </Dropdown>
+                            {islogin ? (
+                                <Dropdown overlay={menu}>
+                                    <a className={style.droplogin} href="#">
+                                        <Avatar
+                                            style={{ marginRight: "10px" }}
+                                            size={32}
+                                            src={require("@assets/favicon.png")}
+                                        />
+                                        {userinfo.username}
+                                    </a>
+                                </Dropdown>
+                            ) : (
+                                <Button onClick={this.showLoginDialog}>
+                                    登录
+                                </Button>
+                            )}
                         </div>
                         <Menu
                             theme="light"
                             mode="horizontal"
                             defaultSelectedKeys={["/"]}
-                            selectedKeys={
-                                this.props.menuStore.SelectedKey
-                            }
+                            selectedKeys={this.props.menuStore.SelectedKey}
                             className={style.menu}
                         >
                             <Menu.Item
                                 key="/"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/"
-                                )}
+                                onClick={this.onLinkClick.bind(this, "/")}
                             >
                                 <Icon type="home" />
                                 首页
                             </Menu.Item>
                             <Menu.Item
                                 key="/topic"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/topic"
-                                )}
+                                onClick={this.onLinkClick.bind(this, "/topic")}
                             >
                                 <Icon type="read" />
                                 文章
@@ -108,31 +118,16 @@ class Home extends React.Component<Iprops, any> {
                             </Menu.Item>
                             <Menu.Item
                                 key="/mine"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/mine"
-                                )}
+                                onClick={this.onLinkClick.bind(this, "/mine")}
                             >
                                 <Icon type="user" />
                                 我的
-                            </Menu.Item>
-                            <Menu.Item
-                                key="/login"
-                                onClick={this.onLinkClick.bind(
-                                    this,
-                                    "/login"
-                                )}
-                            >
-                                <Icon type="login" />
-                                登录
                             </Menu.Item>
                         </Menu>
                     </div>
                 </Header>
                 <Content className={style.content}>
-                    <div className={style.left}>
-                        {this.props.children}
-                    </div>
+                    <div className={style.left}>{this.props.children}</div>
                     <div className={style.user}>
                         个人简介个人简介个人简介个人简介
                     </div>
