@@ -35,7 +35,9 @@ module.exports = [
       // },
       config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
       // typescript 我们这里用 typings-for-css-modules-loader  代替 css-loader
-      // 'css-loader',
+      // {
+      //   loader: 'css-loader?modules&localIdentName=[name]-[hash:base64:5]'
+      // },
       {
         loader: 'typings-for-css-modules-loader',
         options: {
