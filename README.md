@@ -5,20 +5,12 @@
 
 ### TODO
 
-* [x] react + typescript + mobx开发环境 （已完成)
-* [x] antd （已完成)
-* [x] 二次封装axios请求库 （已完成)
-* [x] 添加常用工具函数：深拷贝，防抖函数，节流函数，时间格式处理函数等 （已完成)
-* [x] 基本布局完成（已完成)
+- [x] react + typescript + mobx + antd 开发环境
+- [x] 添加常用工具函数：深拷贝，防抖函数，节流函数，时间格式处理函数， 基本页面布局完成.
+- [x] 添加用户登陆注册，后台用[koa2 + mysql + sequlize](https://github.com/lyrxiaoxiaoniao/lyr-blog-koa2)搭建
+- [ ] markdown集成
+- [ ] 日记功能
 
-+ [x] Markdown  
-+ [ ] JavaScript 
-
-- [x] Markdown  
-- [ ] JavaScript
-
-* [x] Markdown  
-* [ ] JavaScript
 ### 项目结构
 
 ```
