@@ -4,7 +4,7 @@ const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
-import Player from "@components/Player"
+// import Player from "@components/Player"
 import { MenuStore } from "@models/index"
 import { RouteComponentProps } from "react-router"
 import { Ajax as $http, PageResponse } from "../../../server/axios"
@@ -62,9 +62,9 @@ class Home extends React.Component<Iprops, any> {
         return (
             <Layout className={style.layout}>
                 <LoginDialog />
-                <div className={style.player}>
+                {/* <div className={style.player}>
                     <Player />
-                </div>
+                </div> */}
                 <Header className={style.header}>
                     <div className={style.menuContainer}>
                         <div className={style.islogin}>
@@ -129,7 +129,7 @@ class Home extends React.Component<Iprops, any> {
                 <Content className={style.content}>
                     <div className={style.left}>{this.props.children}</div>
                     <div className={style.user}>
-                        个人简介个人简介个人简介个人简介
+                        信息栏------------介绍
                     </div>
                 </Content>
                 {/* <Content className={style.content}>
