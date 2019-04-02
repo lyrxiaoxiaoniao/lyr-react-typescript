@@ -55,3 +55,11 @@ module.exports = {
         historyApiFallback: true
     }
 }
+const os = require('os');
+console.log(`############################################################################`);
+console.log(`##         os: ${os.type()} ${os.arch()} ${os.release()}`);
+console.log(`##        ram: ${ (os.freemem() / 1024 / 1024 / 1024) < 1
+    ? (os.freemem() / 1024 / 1024).toFixed(0) + 'MB'
+    : (os.freemem() / 1024 / 1024 / 1024).toFixed(2) + 'GB'}`);
+console.log(`##       time: ${new Date()}`);
+console.log(`############################################################################`);
