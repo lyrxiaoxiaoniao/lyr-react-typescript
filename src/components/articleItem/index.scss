@@ -4,8 +4,10 @@
     width: 100%;
     justify-content: flex-start;
     height: 140px;
-    padding: 15px 0;
-    border-bottom: 1px solid #e8e8e8;
+    padding: 15px;
+    // border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+    background-color: #fff;
     .left {
         flex: 1;
         overflow: hidden;
