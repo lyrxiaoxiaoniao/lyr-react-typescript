@@ -1,7 +1,7 @@
 import { observable, action } from "mobx"
 export class MenuStore {
     @observable
-    userinfo?: object|any = {}
+    userinfo?: object | any = {}
     @observable
     showIcon: boolean = true
     @observable

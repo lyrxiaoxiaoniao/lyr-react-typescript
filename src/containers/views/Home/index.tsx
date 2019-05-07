@@ -5,13 +5,12 @@ import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
 // import Player from "@components/Player"
-import { MenuStore } from "@models/index"
 import { RouteComponentProps } from "react-router"
 import { Ajax as $http, PageResponse } from "../../../server/axios"
 import localStorage from "@utils/localStorage"
 import LoginDialog from "../Login/index"
 interface Iprops extends RouteComponentProps {
-    menuStore?: MenuStore
+    menuStore?: IMenuStore.MenuStore
     [key: string]: any
 }
 @inject("menuStore")

@@ -91,19 +91,21 @@ const GetAxios = () => {
 
     // Ajax 实体
     const Ajax: BaseAjax = {
-        get: function <T>(url: string, config: object = {}): Promise<BaseResponse<T>> {
+        get: function <T>(url: string, data: object = {}, config: object = {}): Promise<BaseResponse<T>> {
             return request<T>(
                 Object.assign({}, config, {
                     method: 'GET',
-                    url: url
+                    url: url,
+                    params: data
                 })
             );
         },
-        delete: function <T>(url: string, config: object = {}): Promise<BaseResponse<T>> {
+        delete: function <T>(url: string, data: object = {}, config: object = {}): Promise<BaseResponse<T>> {
             return request<T>(
                 Object.assign({}, config, {
                     method: 'DELETE',
-                    url: url
+                    url: url,
+                    params: data
                 })
             );
         },

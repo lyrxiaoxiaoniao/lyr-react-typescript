@@ -2,11 +2,10 @@ import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { Button } from "antd"
 import { ComponentExt } from "@utils/reactExt"
-import { GlobalStore } from "@models/globalStore"
 import * as style from "./index.scss"
 
 interface IProps {
-    globalStore?: GlobalStore
+    globalStore?: IGlobalStore.GlobalStore
 }
 @inject("globalStore")
 @observer

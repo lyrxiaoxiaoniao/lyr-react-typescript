@@ -1,3 +1,11 @@
+import _localStorage from "./localStorage"
+import _sessionStorage from "./sessionStorage"
+
+export const _storage = {
+    _localStorage,
+    _sessionStorage
+}
+
 /**
  * Throttle
  * @param fn {func}

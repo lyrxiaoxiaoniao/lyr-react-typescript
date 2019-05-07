@@ -5,10 +5,9 @@ import { Ajax as $http } from "@server/axios"
 import * as style from "./index.scss"
 import { observer, inject } from "mobx-react"
 import localStorage from "@utils/localStorage"
-import { MenuStore } from "@models/index"
 const FormItem = Form.Item
 interface Iprops {
-    menuStore?: MenuStore
+    menuStore?: IMenuStore.MenuStore
     [key: string]: any
 }
 @inject("menuStore")
