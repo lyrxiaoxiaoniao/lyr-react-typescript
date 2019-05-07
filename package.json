@@ -65,6 +65,7 @@
     "antd": "^3.10.3",
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
+    "markdown-it": "^8.4.2",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
     "mobx-react-router": "^4.0.5",
