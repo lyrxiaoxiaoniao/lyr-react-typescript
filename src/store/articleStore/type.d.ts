@@ -9,8 +9,14 @@ export interface IArticle {
     title: string
     content: string
     head_url: string
+    Tags?: Array<any>
+    User?: Iuser
     [key: string]: any
 }
+interface Iuser {
+    username: string
+}
+
 export interface IArticleID {
     id: string | number
 }

@@ -13,7 +13,9 @@ export class ArticleStore extends StoreExt {
     findArticle = async (data: IArticleStore.IArticleID) => {
         try {
             const res = await this.api.articleApi.articleFindGET(data)
-            this.article = res.data.data
+            runInAction(() => {
+                this.article = res.data.data
+            })
             return res
         } catch (error) {
             return error

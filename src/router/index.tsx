@@ -12,6 +12,11 @@ export const RouterList: Array<any> = [
         exact: true
     },
     {
+        path: "/detail/:id",
+        component: () => import("@views/Page/detail"),
+        exact: false
+    },
+    {
         path: "/counter",
         component: () => import("@views/Counter"),
         exact: false
@@ -19,12 +24,12 @@ export const RouterList: Array<any> = [
     {
         path: "/mine",
         component: () => import("@views/Mine"),
-        exact: true
+        exact: false
     },
     {
         path: "/topic",
         component: () => import("@views/Article"),
-        exact: true
+        exact: false
     },
     {
         path: "/topic/:topicId",
@@ -37,17 +42,17 @@ const RouterMap = () => (
     <Router>
         <Switch>
             <Home>
-                {RouterList.map(item => (
-                    <Route
-                        key={item.path}
-                        exact={item.exact}
-                        path={item.path}
-                        component={Loadable({
-                            loader: item.component,
-                            loading
-                        })}
-                    />
-                ))}
+            {RouterList.map(item => (
+                <Route
+                    key={item.path}
+                    exact={item.exact}
+                    path={item.path}
+                    component={Loadable({
+                        loader: item.component,
+                        loading
+                    })}
+                />
+            ))}
             </Home>
         </Switch>
     </Router>

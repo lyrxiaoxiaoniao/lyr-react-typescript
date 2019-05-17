@@ -22,7 +22,6 @@ const TestData = [
         url: "http://vue.awesometiny.com/"
     }
 ]
-// @(withRouter as any)
 class Test extends ComponentExt<RouteComponentProps, any> {
     renterLink(item: any) {
         return (

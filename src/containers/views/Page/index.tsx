@@ -5,22 +5,31 @@ import ArticleItem from "@components/articleItem"
 import { inject, observer } from "mobx-react"
 interface Iprops {
     articleStore: IArticleStore.ArticleStore
+    routerStore: RouterStore
 }
-@inject("articleStore")
+@inject("articleStore", "routerStore")
 @observer
 class Page extends ComponentExt<Iprops> {
+    public child: any = undefined
     componentDidMount() {
         this.props.articleStore.getList()
     }
+    handleClick = (id: number) => {
+        const { history } = this.props.routerStore
+        history.push({
+            pathname: `/detail/${id}`,
+            state: { value: 123 }
+        })
+    }
     render() {
         const { listData } = this.props.articleStore
-        console.log(listData)
         return (
             <div>
                 {listData.map(item => (
                     <ArticleItem
                         key={item.id}
                         list={item}
+                        click={this.handleClick}
                     />
                 ))}
             </div>

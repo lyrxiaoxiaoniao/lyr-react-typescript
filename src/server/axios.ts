@@ -1,7 +1,8 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import localStorage from "@utils/localStorage"
+import APIconfig from './api/config'
 // 接口前缀
-const BASE_URL = "http://localhost:3000/api"
+const BASE_URL = APIconfig.baseURL
 const setToken:()=>object = () => {
     const token = localStorage.get('token') || ''
     return token ? { Authorization: `Bearer ${token}` } : {}

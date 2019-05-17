@@ -98,7 +98,7 @@ class Home extends React.Component<Iprops, any> {
                                 <Icon type="home" />
                                 首页
                             </Menu.Item>
-                            <Menu.Item
+                            {/* <Menu.Item
                                 key="/topic"
                                 onClick={this.onLinkClick.bind(this, "/topic")}
                             >
@@ -114,7 +114,7 @@ class Home extends React.Component<Iprops, any> {
                             >
                                 <Icon type="mail" />
                                 mobx
-                            </Menu.Item>
+                            </Menu.Item> */}
                             <Menu.Item
                                 key="/mine"
                                 onClick={this.onLinkClick.bind(this, "/mine")}
@@ -125,15 +125,15 @@ class Home extends React.Component<Iprops, any> {
                         </Menu>
                     </div>
                 </Header>
-                <Content className={style.content}>
+                {/* <Content className={style.content}>
                     <div className={style.left}>{this.props.children}</div>
                     <div className={style.user}>
                         信息栏------------介绍
                     </div>
-                </Content>
-                {/* <Content className={style.content}>
-                    {this.props.children}
                 </Content> */}
+                <Content className={style.content}>
+                    {this.props.children}
+                </Content>
                 <BackTop style={{ bottom: "100px" }} />
                 <Footer className={style.footer}>
                     ©2018 Created by
