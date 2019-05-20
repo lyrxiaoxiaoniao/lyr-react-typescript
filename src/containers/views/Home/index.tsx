@@ -4,9 +4,9 @@ const { Header, Content, Footer } = Layout
 import { observer, inject } from "mobx-react"
 import * as style from "./index.scss"
 import { withRouter } from "react-router-dom"
-// import Player from "@components/Player"
 import { RouteComponentProps } from "react-router"
-import { Ajax as $http, PageResponse } from "../../../server/axios"
+// import Player from "@components/Player"
+// import { Ajax as $http, PageResponse } from "../../../server/axios"
 import localStorage from "@utils/localStorage"
 import LoginDialog from "../Login/index"
 interface Iprops extends RouteComponentProps {
@@ -22,14 +22,13 @@ interface Iprops extends RouteComponentProps {
 @observer
 class Home extends React.Component<Iprops, any> {
     componentDidMount() {
-        $http.get<PageResponse>("/test", { params: { a: 1 } }).then(data => {
-            // 无报错，并且对 data 提示 success、data、message?
-            console.log(data, "adasd")
-        })
+        // $http.get<PageResponse>("/test", { params: { a: 1 } }).then(data => {
+        //     // 无报错，并且对 data 提示 success、data、message?
+        //     console.log(data, "adasd")
+        // })
     }
     componentWillMount() {
         if (localStorage.get("userinfo")) {
-            console.log(11111111);
             this.props.menuStore.setUserinfo(
                 localStorage.get("userinfo")
             )

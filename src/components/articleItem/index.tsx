@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as style from "./index.scss"
 import { Tag } from "antd"
-import MarkdownHtml from "../MarkdownHtml"
+import MarkdownHtml from "../MarkdownHtml/index"
 interface PropsList {
     list: IArticleStore.IArticle
     [key: string]: any

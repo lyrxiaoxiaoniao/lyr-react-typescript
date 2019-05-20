@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
 import * as style from "./index.scss"
-import MarkdownHtml from "@components/MarkdownHtml"
+import MarkdownHtml from "@components/MarkdownHtml/index"
 import { inject, observer } from "mobx-react"
 interface Iprops {
     articleStore: IArticleStore.ArticleStore

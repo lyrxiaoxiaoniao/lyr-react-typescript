@@ -13,7 +13,7 @@ const cacheLoader = {
 module.exports = [
   {
     test: /\.css$/,
-    include: [resolve('node_nodules')],
+    // include: [resolve('node_nodules')],
     use: [
       config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
       cacheLoader,
