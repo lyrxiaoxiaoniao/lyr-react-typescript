@@ -1,5 +1,5 @@
 Arguments: 
-  G:\工作\node\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/markdown-it-highlight-lines -D
+  G:\工作\node\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/markdown-it-toc-and-anchor -D
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;G:\工作\node\;F:\mysql-5.7.24-winx64\bin\;;C:\WINDOWS\System32\OpenSSH\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;G:\工作\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/@types%2fmarkdown-it-highlight-lines: Not found
+  Error: https://registry.npm.taobao.org/@types%2fmarkdown-it-toc-and-anchor: Not found
       at Request.params.callback [as _callback] (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65894:18)
       at Request.self.callback (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129018:22)
       at Request.emit (events.js:182:13)
@@ -49,6 +49,7 @@ npm manifest:
     "devDependencies": {
       "@types/classnames": "^2.2.6",
       "@types/jquery": "^3.3.22",
+      "@types/markdown-it": "^0.0.7",
       "@types/react": "^16.4.18",
       "@types/react-dom": "^16.0.9",
       "@types/react-loadable": "^5.4.1",
@@ -93,9 +94,10 @@ npm manifest:
     "dependencies": {
       "antd": "^3.10.3",
       "axios": "^0.18.0",
+      "highlight.js": "^9.15.6",
       "jquery": "^3.3.1",
       "markdown-it": "^8.4.2",
-      "markdown-it-highlight-lines": "^1.0.2",
+      "markdown-it-toc-and-anchor": "^4.2.0",
       "mobx": "^5.5.2",
       "mobx-react": "^5.3.6",
       "mobx-react-router": "^4.0.5",
@@ -153,6 +155,18 @@ Lockfile:
     version "0.0.29"
     resolved "http://registry.npm.taobao.org/@types/json5/download/@types/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
     integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+  
+  "@types/linkify-it@*":
+    version "2.1.0"
+    resolved "https://registry.npm.taobao.org/@types/linkify-it/download/@types/linkify-it-2.1.0.tgz#ea3dd64c4805597311790b61e872cbd1ed2cd806"
+    integrity sha1-6j3WTEgFWXMReQth6HLL0e0s2AY=
+  
+  "@types/markdown-it@^0.0.7":
+    version "0.0.7"
+    resolved "https://registry.npm.taobao.org/@types/markdown-it/download/@types/markdown-it-0.0.7.tgz#75070485a3d8ad11e7deb8287f4430be15bf4d39"
+    integrity sha1-dQcEhaPYrRHn3rgof0QwvhW/TTk=
+    dependencies:
+      "@types/linkify-it" "*"
   
   "@types/node@*":
     version "10.12.18"
@@ -1498,7 +1512,7 @@ Lockfile:
     resolved "http://registry.npm.taobao.org/clone-stats/download/clone-stats-1.0.0.tgz#b3782dff8bb5474e18b9b6bf0fdfe782f8777680"
     integrity sha1-s3gt/4u1R04Yuba/D9/ngvh3doA=
   
-  clone@^2.1.1, clone@^2.1.2:
+  clone@^2.1.0, clone@^2.1.1, clone@^2.1.2:
     version "2.1.2"
     resolved "http://registry.npm.taobao.org/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
     integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
@@ -3386,6 +3400,11 @@ Lockfile:
     resolved "http://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
     integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
   
+  highlight.js@^9.15.6:
+    version "9.15.6"
+    resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
+    integrity sha1-ctTY13nsBmr5oXyxQ2DD3vCqV8Q=
+  
   history@^4.7.2:
     version "4.7.2"
     resolved "http://registry.npm.taobao.org/history/download/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
@@ -4517,10 +4536,13 @@ Lockfile:
     dependencies:
       object-visit "^1.0.0"
   
-  markdown-it-highlight-lines@^1.0.2:
-    version "1.0.2"
-    resolved "https://registry.npm.taobao.org/markdown-it-highlight-lines/download/markdown-it-highlight-lines-1.0.2.tgz#33ecf51cd9d9e741cd86f583cb95b67de81fc9c7"
-    integrity sha1-M+z1HNnZ50HNhvWDy5W2fegfycc=
+  markdown-it-toc-and-anchor@^4.2.0:
+    version "4.2.0"
+    resolved "https://registry.npm.taobao.org/markdown-it-toc-and-anchor/download/markdown-it-toc-and-anchor-4.2.0.tgz#d1613327cc63c61f82cd66cbac5564f4db12c0e9"
+    integrity sha1-0WEzJ8xjxh+CzWbLrFVk9NsSwOk=
+    dependencies:
+      clone "^2.1.0"
+      uslug "^1.0.4"
   
   markdown-it@^8.4.2:
     version "8.4.2"
@@ -8046,6 +8068,11 @@ Lockfile:
       json-stable-stringify-without-jsonify "^1.0.1"
       through2-filter "^3.0.0"
   
+  "unorm@>= 1.0.0":
+    version "1.5.0"
+    resolved "https://registry.npm.taobao.org/unorm/download/unorm-1.5.0.tgz#01fa9b76f1c60f7916834605c032aa8962c3f00a"
+    integrity sha1-AfqbdvHGD3kWg0YFwDKqiWLD8Ao=
+  
   unpipe@1.0.0, unpipe@~1.0.0:
     version "1.0.0"
     resolved "http://registry.npm.taobao.org/unpipe/download/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
@@ -8115,6 +8142,13 @@ Lockfile:
     version "3.1.1"
     resolved "http://registry.npm.taobao.org/use/download/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
     integrity sha1-1QyMrHmhn7wg8pEfVuuXP04QBw8=
+  
+  uslug@^1.0.4:
+    version "1.0.4"
+    resolved "https://registry.npm.taobao.org/uslug/download/uslug-1.0.4.tgz#b9a22f0914e0a86140633dacc302e5f4fa450677"
+    integrity sha1-uaIvCRTgqGFAYz2swwLl9PpFBnc=
+    dependencies:
+      unorm ">= 1.0.0"
   
   util-deprecate@~1.0.1:
     version "1.0.2"

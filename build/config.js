@@ -1,7 +1,7 @@
 const path = require("path")
 
 const constants = require("./constants")
-
+console.log(constants, 'constants')
 // 静态资源访问域名（CDN）
 const STATICDOMAIN = constants.APP_ENV === "prod" ? "." : ""
 module.exports = {
