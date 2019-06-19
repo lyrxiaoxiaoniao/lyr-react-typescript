@@ -1,6 +1,6 @@
 import * as React from "react"
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+// import { HashRouter as Router, Switch, Route } from "react-router-dom"
 import Loadable from "react-loadable"
 import loading from "./Loadding"
 import Home from "@views/Home"

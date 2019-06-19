@@ -1,6 +1,7 @@
 import * as React from "react"
 import "highlight.js/styles/atom-one-light.css"
 import * as style from "./index.scss"
+import './toc.css'
 import markdownitAnchor from "markdown-it-anchor"
 import markdownitTocDoneRight from "markdown-it-toc-done-right"
 const hljs = require("highlight.js")

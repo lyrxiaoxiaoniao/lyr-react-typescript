@@ -1,0 +1,7 @@
+.table-of-contents{
+    color: brown !important;
+    position: fixed;
+    top: 200px;
+    right: 100px;
+    width: 200px;
+}
