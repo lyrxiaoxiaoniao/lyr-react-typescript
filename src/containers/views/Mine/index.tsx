@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
-// import * as style from "./index.scss"
+import * as style from "./index.scss"
 import ArticleItem from "@components/articleItem"
 import { inject, observer } from "mobx-react"
 interface Iprops {
@@ -24,7 +24,7 @@ class Mine extends ComponentExt<Iprops> {
     render() {
         const { listData } = this.props.articleStore
         return (
-            <div>
+            <div className={style.mine}>
                 {listData.map(item => (
                     <ArticleItem
                         key={item.id}

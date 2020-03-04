@@ -135,8 +135,9 @@ class Home extends React.Component<Iprops, any> {
                 </Content>
                 <BackTop style={{ bottom: "100px" }} />
                 <Footer className={style.footer}>
+                    <a href="http://www.beian.miit.gov.cn">鄂ICP备18027438号</a>
                     ©2018 Created by
-                    <span className={style.text}> Xiao Liu </span>
+                    <span> Xiao Liu </span>
                 </Footer>
             </Layout>
         )

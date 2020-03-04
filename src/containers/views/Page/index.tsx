@@ -1,8 +1,8 @@
 import * as React from "react"
 import { ComponentExt } from "@utils/reactExt"
-// import * as style from "./index.scss"
 import ArticleItem from "@components/articleItem"
 import { inject, observer } from "mobx-react"
+import * as styles from './index.scss'
 interface Iprops {
     articleStore: IArticleStore.ArticleStore
     routerStore: RouterStore
@@ -24,7 +24,7 @@ class Page extends ComponentExt<Iprops> {
     render() {
         const { listData } = this.props.articleStore
         return (
-            <div>
+            <div className={styles.pContent}>
                 {listData.map(item => (
                     <ArticleItem
                         key={item.id}
